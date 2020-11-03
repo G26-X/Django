@@ -11,3 +11,5 @@
 + 叶博辰
 + 徐翔宇
 + 李昊洋
+## 用例图
+![用例图](https://github.com/G26-X/Paiyo/blob/main/UseCase.png)
