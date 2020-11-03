@@ -13,3 +13,5 @@
 + 李昊洋
 ## 用例图
 ![用例图](https://github.com/G26-X/Paiyo/blob/main/UseCase.png)
+## 顺序图（用户解谜）
+![顺序图](https://github.com/G26-X/Paiyo/blob/main/Sequence.png)
