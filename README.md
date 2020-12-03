@@ -1,4 +1,4 @@
-# 派哟编程拼图
+# 派哟编程拼图小程序
 ## 需求描述
 派哟编程拼图是一个儿童编程教学系统，包括拼插式的实体积木和配套的微信小程序。
 小程序内设有关卡模式的教程，用户拼接积木后，在小程序端的解题界面上将显示出对应语句；用户可以在界面上获取下一步拼接的提示；完成一个关卡后解锁下一关卡。
@@ -15,3 +15,6 @@
 ![用例图](https://github.com/G26-X/Paiyo/blob/main/UseCase.png)
 ## 顺序图（用户解谜）
 ![顺序图](https://github.com/G26-X/Paiyo/blob/main/Sequence.png)
+
+# 教主小宇宙 RestfulAPI
+[详情点击这里](https://github.com/G26-X/Paiyo/blob/main/ApocalBlogRestfulAPI.md)
