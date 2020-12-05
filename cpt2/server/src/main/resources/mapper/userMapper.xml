@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 此处与接口类地址对应 -->
+<mapper namespace="com.migu.tntsb.tntsb.mapper.userMapper">
+    <!-- 此处与接口方法名对应 指定参数类型与返回结果类型-->
+    <!-- 专门处理用户信息 -->
+    <select id="getUserInfoByuid" parameterType="java.lang.Integer" resultType="com.migu.tntsb.tntsb.domain.User">
+        select * from user where uid = #{id}
+    </select>
+    <select id="getAllUsers" resultType="com.migu.tntsb.tntsb.domain.User">
+        select * from user
+    </select>
+</mapper>

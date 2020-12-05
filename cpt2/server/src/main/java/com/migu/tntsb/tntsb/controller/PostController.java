@@ -21,10 +21,10 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping(value = "/post")
-public class UserController {
+public class PostController {
 
     @Autowired
-    public UserController(postMapper postMapper){
+    public PostController(postMapper postMapper){
         this.postMapper = postMapper;
     }
     private postMapper postMapper;
@@ -35,7 +35,7 @@ public class UserController {
         Post postById = postMapper.getPostbyId(pid);
         if(postById==null){
             response.setCode(404);
-            response.setMessage("User not Found");
+            response.setMessage("Post not Found");
         }
         response.setData(postById);
         return  response;
@@ -47,7 +47,7 @@ public class UserController {
         List<Post> posts = postMapper.getAllPosts();
         if(posts==null){
             response.setCode(404);
-            response.setMessage("User not Found");
+            response.setMessage("Post not Found");
         }
         response.setData(posts);
         return  response;
