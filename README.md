@@ -12,8 +12,10 @@
 ![顺序图](https://github.com/G26-X/Paiyo/blob/main/Sequence-1.png)
 ## 顺序图（查看个人主页）
 ![顺序图](https://github.com/G26-X/Paiyo/blob/main/Sequence-2.png)
-## 类图
-![类图](https://github.com/G26-X/Paiyo/blob/main/Sequence-2.png)
+## 类图（前端）
+![类图](https://github.com/G26-X/Paiyo/blob/main/Class-1.png)
+## 类图（后端）
+![类图](https://github.com/G26-X/Paiyo/blob/main/Class-2.png)
 
 # 教主小宇宙 RestfulAPI
 [详情点击这里](https://github.com/G26-X/Paiyo/blob/main/ApocalBlogRestfulAPI.md)
