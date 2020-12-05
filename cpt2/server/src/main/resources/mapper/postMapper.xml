@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 此处与接口类地址对应 -->
+<mapper namespace="com.migu.tntsb.tntsb.mapper.postMapper">
+    <!-- 此处与接口方法名对应 指定参数类型与返回结果类型-->
+    <select id="getPostbyId" parameterType="java.lang.Integer" resultType="com.migu.tntsb.tntsb.domain.Post">
+        select * from posts where postId = #{id}
+    </select>
+    <select id="getAllPosts" resultType="com.migu.tntsb.tntsb.domain.Post">
+        select * from posts
+    </select>
+    <select id="addPost"  resultType="void">
+        INSERT INTO posts VALUES (NULL, #{0} ,NULL,NULL,#{2},NULL,NULL,NULL,#{1});
+    </select>
+    <select id="likePost"  parameterType="java.lang.Integer" resultType="void">
+        UPDATE  posts SET like=like+1 WHERE postId=#{pid}
+    </select>
+    <select id="getComments"  parameterType="java.lang.Integer">
+        select * from comments WHERE postId=#{pid}
+    </select>
+    <select id="postComments"  resultType="void">
+        INSERT INTO comments VALUES (#{0},#{1},#{2},#{3});
+    </select>
+</mapper>

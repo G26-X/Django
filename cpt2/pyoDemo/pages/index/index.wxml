@@ -1,0 +1,172 @@
+<view class="container {{isDetailPage?'detail':''}}">
+  <view class="swipe-main">
+    <!--Post Modal-->
+
+    <view class="cu-modal {{modalName=='postModal'?'show':''}}">
+      <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+          <view class="content">分享创作</view>
+          <view class="action" bindtap="hideModal">
+            <text class="cuIcon-close text-red"></text>
+          </view>
+        </view>
+        <view >
+          <!-- Modal 内容 -->
+          <view class="cu-bar bg-white ">
+            <view class="action">
+              图片上传
+            </view>
+            <view class="action">
+              {{imgList.length}}/1
+            </view>
+          </view>
+        </view>
+        <view class="cu-form-group">
+          <view class="grid col-4 grid-square flex-sub">
+            <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage"
+              data-url="{{imgList[index]}}">
+              <image src='{{imgList[index]}}' mode='aspectFill'></image>
+              <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+                <text class="cuIcon-close"></text>
+              </view>
+            </view>
+            <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<1}}">
+              <text class="cuIcon-cameraadd"></text>
+            </view>
+          </view>
+        </view>
+        <view class="cu-form-group align-start">
+          <view class="title">介绍</view>
+          <textarea maxlength="-1" bindinput="discriBInput" placeholder="介绍下你的大作吧"></textarea>
+        </view>
+        <view class="cu-bar bg-white justify-end">
+        <view class="action">
+          <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+          <button class="cu-btn bg-green margin-left" bindtap="upload">确定</button>
+        </view>
+      </view>
+    </view>
+      </view>
+
+    <!--Comment Modal-->
+    <view class="cu-modal bottom-modal {{modalName=='cmmdModal'?'show':''}}">
+      <view class="cu-dialog">
+        <view class="cu-bar bg-white">
+          <view class="cuIcon-close lg text-gray" bindtap="hideModal"></view>
+        </view>
+        <view class="padding-sm">
+          <view class="cu-list menu-avatar comment solids-top">
+            <view class="cu-item" wx:for="{{comments}}">
+              <view class="cu-avatar round" style="background-image:url({{item.userIcon}});"></view>
+              <view class="content">
+                <view class="text-grey">{{item.userName}}</view>
+                <view class="text-gray text-content text-df" style="text-align:start">
+                  {{item.content}}
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="cu-form-group margin-top">
+            <view class="title">评论</view>
+            <input placeholder="有啥想说的..." bindinput="commentBInput"></input>
+            <button class="cu-btn bg-green shadow" bindtap="shotComment">提交</button>
+          </view>
+        </view>
+      </view>
+    </view>
+      <swiper class="swiper-show" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}"
+        vertical="{{vertical}}" bindchange="pageChange" interval="{{interval}}" duration="{{duration}}">
+        <block wx:for="{{pageData}}" wx:key="item.postId">
+          <swiper-item>
+            <view class="swiper-item" style="background-image:url('{{item.img}}');background-size:100% 100%;">
+              <view class="swiper-item-mask"></view>
+            </view>
+            <cover-view class="swiper-show-cover-container">
+              <cover-view class="swiper-show-cover-header">
+                <!--User Info of showpage-->
+                <cover-view class="cu-avatar lg round margin-left shadow-blur bg-img"
+                  style="background-image:url({{item.userIcon}});"></cover-view>
+                <cover-view class="text-df" style="padding-left:10rpx;padding-right:5rpx;text-shadow:0px 1px 4px #020202;">
+                  {{item.userName}}
+                </cover-view>
+                <button
+                  class="cu-btn round sm button-hover {{showData.userData.isFllowed?'bg-cyan':''}}">{{showData.userData.isFllowed?"已关注":"关注"}}</button>
+                <cover-view class="cuIcon-hot text-white" style="margin-left:12rpx"></cover-view>
+                <cover-view style="text-shadow:0px 1px 4px #020202;">热度：{{item.hotPoint}}</cover-view>
+              </cover-view>
+              <cover-view class="swiper-show-cover">
+                <cover-view class="swiper-show-cover-action swiper-show-cover-action-left">
+                  <!--左侧区域-->
+                  <cover-view class="textBox">{{item.description}}</cover-view>
+                  <cover-view class="labalBox">
+                    <!--话题标签-->
+                    <!-- <cover-view class="cu-capsule radius">
+    <cover-view class="cu-tag bg-brown sm"><cover-view class="cuIcon-likefill"></cover-view></cover-view>
+    <cover-view class="cu-tag line-brown sm">标签</cover-view>
+  </cover-view> -->
+                  </cover-view>
+                </cover-view>
+                <cover-view class="swiper-show-cover-action swiper-show-cover-action-right">
+                  <!--右侧区域-->
+                  <cover-view class="cu-avatar lg round"
+                    style="background-image:url({{userInfo?userInfo.avatarUrl:'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=249589786,2941481629&fm=26&gp=0.jpg'}});"
+                    bindtap="newPost"></cover-view>
+                  <cover-view class="text-df">{{userInfo?userInfo.nickName:"未登录"}}</cover-view>
+                  <cover-view class="icon-btn" data-pid="{{item.postId}}" bindtap="likePost">
+                    <cover-view
+                      class="cuIcon {{item.isLiked?'cuIcon-likefill text-pink':'cuIcon-like text-white'}}  lg">
+                    </cover-view>
+                    <cover-view class="text-df">{{item.like}}</cover-view>
+                  </cover-view>
+                  <cover-view class="icon-btn" data-pid="{{item.postId}}" bindtap="favPost">
+                    <cover-view
+                      class="cuIcon {{item.isFaved?'cuIcon-favorfill text-yellow':'cuIcon-favor text-white'}} ">
+                    </cover-view>
+                    <cover-view class="text-df">{{item.fav}}</cover-view>
+                  </cover-view>
+                  <cover-view class="icon-btn" data-pid="{{item.postId}}" bindtap="openCmmd">
+                    <cover-view class="cuIcon cuIcon-commentfill text-white"></cover-view>
+                    <cover-view class="text-df">{{item.cmmd}}</cover-view>
+                  </cover-view>
+                  <cover-view class="icon-btn" bindtap="triggerDetailPage">
+                    <cover-view class="cuIcon cuIcon-moreandroid  lg text-white"></cover-view>
+                    <cover-view class="text-df">更多</cover-view>
+                  </cover-view>
+                </cover-view>
+              </cover-view>
+            </cover-view>
+          </swiper-item>
+        </block>
+      </swiper>
+      <!-- <a bindtap="loadPages" class="weui-btn weui-btn_mini weui-btn_primary">Debug按钮</a> -->
+    </view>
+    <!--页面详情-->
+    <view class="swipe-detail">
+      <!--背景-->
+      <image src="{{pageData[duration].img}}"></image>
+      <!--详情主面板-->
+      <view class="swipe-detail-main">
+        <view class="swipe-detail-main-header">
+          <view class="cuIcon-back" bindtap="triggerDetailPage"></view>
+          <view class="cuIcon-down"></view>
+        </view>
+        <!--程序渲染卡-->
+
+        <view class="swipe-detail-main-card shadow-warp">
+          <text decode="{{true}}">
+            from Pyon import *\n
+            while True\n
+            &nbsp;&nbsp;red_led.toggle()\n
+            &nbsp;&nbsp;sleep(1)
+          </text>
+        </view>
+        <!--相关推荐-->
+        <view class="badge shadow shadow-lg">相关推荐</view>
+        <view class="swipe-detail-main-rcmd">
+          <scroll-view>
+            <image wx:for="{{pageData}}" src="{{item.img}}"></image>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+  </view>

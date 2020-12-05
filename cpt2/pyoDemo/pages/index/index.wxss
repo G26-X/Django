@@ -1,0 +1,196 @@
+
+.container{
+  display: flex;
+  flex-direction: row;
+  width:200vw;
+  transition-duration:0.5s;
+  animation-duration:0.5s ease-in-out ;
+}
+.container.detail{
+  transform: translateX(-100vw);
+}
+.swiper-item{
+  height:100%;
+  text-align: center;
+}
+.cover{
+  height:50px;
+  width: 50px;
+}
+
+.swiper-show{
+  height:100vh;
+}
+.swiper-show-cover .swiper-show-cover-action{
+  font-size: larger;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  color: white;
+  text-shadow:0px 1px 4px #020202;
+}
+.swipe-main{
+  width:100vw;
+  height:100vh;
+  position: relative;
+}
+.swiper-show-cover .swiper-show-cover-action-left{
+  font-size: larger;
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  justify-content: flex-end;
+  color: white;
+  padding-bottom: 30rpx;
+}
+.swiper-show-cover .swiper-show-cover-action-right{
+  color: white;
+  padding-bottom: 50rpx;
+  padding-right: 15rpx;
+}
+.swiper-show-cover-header{
+  height: 165rpx;
+  padding-top: 20px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 30rpx;
+}
+
+.swiper-show-cover-container{
+  position: absolute;
+  top:0rpx;
+  left:0rpx;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ width: 100%;
+ height:100%;
+}
+.swiper-show-cover {
+  position: relative;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   width: 100%;
+   height:100%;
+  }
+
+  .labalBox{
+display: flex;
+flex-direction: row;
+align-content: flex-start;
+padding-left: 40rpx;
+max-width: 80rpx;
+flex-wrap: wrap;
+margin-top:10rpx;
+  }
+  .textBox{
+    white-space: normal;
+    word-break: break-all;
+    max-width: 55vw;
+    padding-left: 30rpx;
+    font-size:30rpx;
+    color:white;
+  }
+  .swiper-show-cover-action-right .icon-btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15rpx;
+  }
+  .swiper-show-cover-action-right .icon-btn .cuIcon{
+    font-size: 80rpx;
+    margin-bottom:3rpx;
+  }
+  .swipe-detail{
+    height:100vh;
+    width:100vw;
+    position: relative;
+  }
+  .swipe-detail>image{
+height:100%;
+width:100%;
+position: absolute;
+top:0rpx;
+left:0rpx;
+  }
+  .swipe-detail-main{
+    height:100%;
+    width: 100%;
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+  }
+  .swipe-detail-main-header{
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    padding-top:70rpx;
+    color: black;
+    font-size: 40rpx;
+  }
+  .swipe-detail-main-header>.cuIcon-back{
+    margin-left: 35rpx;
+    margin-right:50rpx;
+    color: white;
+  }
+  .swipe-detail-main-card{
+    height:400rpx;
+    width: 75%;
+    margin:60rpx auto 80rpx auto;
+    border-radius: 15rpx;
+    background-color: orange;
+    padding:50rpx;
+  }
+  .swipe-detail-main-card>text{
+    font-size: 33rpx;
+    font-weight: bold;
+  }
+  .swipe-detail-main-rcmd{
+    background-color: white;
+    border-top-left-radius: 25rpx;
+    border-top-right-radius: 25rpx;
+    width:100vw;
+    padding:40rpx 30rpx 10rpx 30rpx;
+
+    height: calc(100vh - 650rpx);
+    position: relative;
+    overflow-y: scroll;
+  }
+  .swipe-detail-main-rcmd scroll-view{
+    column-count: 2;
+    column-gap: 20rpx;
+    overflow-y: scroll;
+  }
+  .swipe-detail-main-rcmd  scroll-view image{
+    width: 100%;
+    margin-bottom: 20rpx;
+  }
+    .badge{
+    width: 220rpx;
+    height:65rpx;
+    border-radius: 35rpx;
+    font-size: 27rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: calc(50vw - 100rpx);
+    top:620rpx;
+    z-index: 1;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0px 3px 13px 1px #888888;
+    background-color: orange;
+  }
+  .swiper-item-mask{
+    position: absolute;
+    bottom: 0rpx;
+    left: 0rpx;
+    height:300rpx;
+    width:100%;
+    background-image: linear-gradient(to top, rgb(0,0,0,0.8), transparent);
+  }
