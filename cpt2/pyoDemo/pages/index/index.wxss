@@ -118,11 +118,12 @@ top:0rpx;
 left:0rpx;
   }
   .swipe-detail-main{
-    height:100%;
-    width: 100%;
+    height:100vh;
+    width: 100vw;
     backdrop-filter: blur(8px);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
   .swipe-detail-main-header{
     display: flex;
@@ -193,4 +194,8 @@ left:0rpx;
     height:300rpx;
     width:100%;
     background-image: linear-gradient(to top, rgb(0,0,0,0.8), transparent);
+  }
+  .avatar-block{
+    width: 100%;
+    padding:20rpx 0 30rpx 0;
   }

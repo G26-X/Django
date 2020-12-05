@@ -51,6 +51,7 @@ Page({
     comment: null,
     detailBg: "https://i.loli.net/2020/12/02/us5eKVFWy2OHbBA.jpg",
     userInfo: null,
+    userData:{"work":1,"fav":12,"follower":13},
     comments: [{
       "pid": 1,
       "userName": "小聪",
@@ -204,6 +205,16 @@ Page({
       modalName:"postModal"
     });
   },
+  openUserInfo(){//打开用户个人页面
+    if(this.data.userInfo==null){
+      this.login();
+      return;
+    }
+    this.setData({
+      modalName:"uInfoModal"
+    });
+    updateUserInfo();
+  },
   openCmmd(e) {
     this.setData({
       modalName:"cmmdModal"
@@ -288,6 +299,23 @@ Page({
     this.setData({
       comment: input
     });
+  },
+  updateUserInfo(){
+    let that=this;
+    wx.request({
+      url: 'https://migu.plus/api/pyo/userInfo?uName=' + that.data.userInfo.nickName, //获取用户信息（点赞收藏啥的）
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (e) {
+        if (e.statusCode == 200) {
+          console.log("user Info fetched");
+          that.setData({
+            userInfo:res.data.data
+          });
+        }
+      }
+    })
   },
   uplaod() {
     if (this.data.imgList.length != 1) { //必须有图片

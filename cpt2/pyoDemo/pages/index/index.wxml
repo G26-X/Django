@@ -47,7 +47,46 @@
       </view>
     </view>
       </view>
-
+    <!--User Info Modal-->
+    <view class="cu-modal {{modalName=='uInfoModal'?'show':''}}">
+      <view class="cu-dialog">
+        <view class="cu-bar bg-white justify-end">
+          <view class="content">个人页面</view>
+          <view class="action" bindtap="hideModal">
+            <text class="cuIcon-close text-red"></text>
+          </view>
+        </view>
+        <view class="avatar-block">
+          <view class="cu-avatar lg round"
+                    style="background-image:url({{userInfo?userInfo.avatarUrl:'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=249589786,2941481629&fm=26&gp=0.jpg'}});"
+                    bindtap="openUserInfo"></view>
+    <view class="text-xl">{{userInfo?userInfo.nickName:"未登录"}}
+    </view>
+        </view>
+        <view class="padding flex text-center text-grey bg-white shadow-warp">
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-orange">{{userData.work}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-attentionfill"></text> 作品</view>
+    </view>
+    <view class="flex flex-sub flex-direction solid-right">
+      <view class="text-xxl text-blue">{{userData.fav}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-favorfill"></text> 收藏</view>
+    </view>
+    <view class="flex flex-sub flex-direction">
+      <view class="text-xxl text-green">{{userData.follower}}</view>
+      <view class="margin-top-sm">
+        <text class="cuIcon-friendfamous"></text>关注者</view>
+    </view>
+  </view>
+        <view class="cu-bar bg-white justify-end">
+        <view class="action">
+          <button class="cu-btn bg-green margin-left" bindtap="newPost">投稿</button>
+        </view>
+      </view>
+    </view>
+      </view>
     <!--Comment Modal-->
     <view class="cu-modal bottom-modal {{modalName=='cmmdModal'?'show':''}}">
       <view class="cu-dialog">
@@ -110,7 +149,7 @@
                   <!--右侧区域-->
                   <cover-view class="cu-avatar lg round"
                     style="background-image:url({{userInfo?userInfo.avatarUrl:'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=249589786,2941481629&fm=26&gp=0.jpg'}});"
-                    bindtap="newPost"></cover-view>
+                    bindtap="openUserInfo"></cover-view>
                   <cover-view class="text-df">{{userInfo?userInfo.nickName:"未登录"}}</cover-view>
                   <cover-view class="icon-btn" data-pid="{{item.postId}}" bindtap="likePost">
                     <cover-view
@@ -140,6 +179,8 @@
       </swiper>
       <!-- <a bindtap="loadPages" class="weui-btn weui-btn_mini weui-btn_primary">Debug按钮</a> -->
     </view>
+
+
     <!--页面详情-->
     <view class="swipe-detail">
       <!--背景-->
